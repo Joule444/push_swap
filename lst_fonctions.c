@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:22:11 by jules             #+#    #+#             */
-/*   Updated: 2022/06/16 16:01:49 by jules            ###   ########.fr       */
+/*   Updated: 2022/06/17 11:48:44 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*a;
 
-	if (lst)
-	{
 		if (*lst)
 		{
 			a = ft_lstlast(*lst);
@@ -46,7 +44,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		}
 		else
 			*lst = new;
-	}
 }
 
 void	ft_lstclear(t_list **lst)

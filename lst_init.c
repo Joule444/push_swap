@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:43:18 by jules             #+#    #+#             */
-/*   Updated: 2022/06/16 16:10:57 by jules            ###   ########.fr       */
+/*   Updated: 2022/06/17 11:44:38 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,13 @@ t_list	**lst_init_parse(char **argv)
         ft_lstadd_back(list, elem);
         i++;
     }
-	return (list);
+	i = 0;
+	while (arr[i])
+    {
+		free(arr[i]);
+        i++;
+    }
+	return (free(arr), list);
 }
 
 t_list	**lst_init(int argc, char **argv)

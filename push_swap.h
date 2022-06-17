@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/06/16 10:24:40 by jules            ###   ########.fr       */
+/*   Updated: 2022/06/16 16:02:01 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 
 #include "ft_printf/ft_printf.h"
 
+int	ft_atoi(const char *str);
+char	**ft_split(char const *s, char sep);
+
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }	t_list;
+
+t_list	*ft_lstnew(int content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	**lst_init_parse(char **argv);
+t_list	**lst_init(int argc, char **argv);
+void	ft_lstclear(t_list **lst);
 
  #endif

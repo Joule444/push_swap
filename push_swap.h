@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/06/16 16:02:01 by jules            ###   ########.fr       */
+/*   Updated: 2022/06/17 16:29:54 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	**lst_init_parse(char **argv);
 t_list	**lst_init(int argc, char **argv);
 void	ft_lstclear(t_list **lst);
+int	ft_lstsize(t_list *lst);
+t_list	*lst_index(t_list **list, int index);
+void	swap(t_list **stack_a);
 
  #endif

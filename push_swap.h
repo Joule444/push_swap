@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/06/17 16:29:54 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/04 17:46:36 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,23 @@ typedef struct s_list
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
 t_list	**lst_init_parse(char **argv);
 t_list	**lst_init(int argc, char **argv);
 void	ft_lstclear(t_list **lst);
 int	ft_lstsize(t_list *lst);
 t_list	*lst_index(t_list **list, int index);
-void	swap(t_list **stack_a);
+void	swap_a(t_list **stack_a);
+void	swap_b(t_list **stack_b);
+void	swap_s(t_list **stack_a, t_list **stack_b);
+void	push_b(t_list **stack_a, t_list **stack_b);
+void	push_a(t_list **stack_a, t_list **stack_b);
+void	rotate_a(t_list **stack_a);
+void	rotate_b(t_list **stack_b);
+void	rotate_r(t_list **stack_a, t_list **stack_b);
+void	rev_rotate_a(t_list **stack_a);
+void	rev_rotate_b(t_list **stack_b);
+void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
 
  #endif

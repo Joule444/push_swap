@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:22:11 by jules             #+#    #+#             */
-/*   Updated: 2022/06/17 14:21:42 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/04 15:53:06 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		}
 		else
 			*lst = new;
+	}
+}
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (lst)
+	{
+		new->next = *lst;
+		*lst = new;
 	}
 }
 

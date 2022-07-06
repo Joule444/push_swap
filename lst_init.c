@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:43:18 by jules             #+#    #+#             */
-/*   Updated: 2022/06/17 13:10:33 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/06 14:54:23 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_list	**lst_init_parse(char **argv)
 	list = malloc(sizeof(t_list) * arr_len(arr) - 1);
 	if (!list)
 		return (NULL);
+	*list = NULL;
     while (arr[i])
     {
         n = ft_atoi(arr[i]);
@@ -60,6 +61,7 @@ t_list	**lst_init(int argc, char **argv)
 	list = malloc(sizeof(t_list) * argc - 1);
 	if (!list)
 		return (NULL);
+	*list = NULL;
 	i = 1;
     while (i < argc)
     {

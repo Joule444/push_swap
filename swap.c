@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:49:21 by jules             #+#    #+#             */
-/*   Updated: 2022/06/27 12:06:42 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/06 15:07:05 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap_a(t_list **stack_a)
 	tmp = lst_index(stack_a, 0)->content;
 	lst_index(stack_a, 0)->content = lst_index(stack_a, 1)->content;
 	lst_index(stack_a, 1)->content = tmp;
-	ft_printf("sa");
+	ft_printf("sa\n");
 }
 
 void	swap_b(t_list **stack_b)
@@ -29,7 +29,7 @@ void	swap_b(t_list **stack_b)
 	tmp = lst_index(stack_b, 0)->content;
 	lst_index(stack_b, 0)->content = lst_index(stack_b, 1)->content;
 	lst_index(stack_b, 1)->content = tmp;
-	ft_printf("sb");
+	ft_printf("sb\n");
 }
 
 void	swap_s(t_list **stack_a, t_list **stack_b)
@@ -42,5 +42,5 @@ void	swap_s(t_list **stack_a, t_list **stack_b)
 	tmp = lst_index(stack_b, 0)->content;
 	lst_index(stack_b, 0)->content = lst_index(stack_b, 1)->content;
 	lst_index(stack_b, 1)->content = tmp;
-	ft_printf("ss");
+	ft_printf("ss\n");
 }

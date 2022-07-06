@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/07/04 17:15:03 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/06 15:12:08 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ int main(int argc, char** argv)
     {
         stack_a = lst_init_parse(argv);
         stack_b = malloc(sizeof(t_list) * ft_lstsize(*stack_a));
+        *stack_b = NULL;
     }
     else if (argc > 2)
     {
         stack_a = lst_init(argc, argv);
         stack_b = malloc(sizeof(t_list) * ft_lstsize(*stack_a));
+        *stack_b = NULL;
     }
-    //swap_a(stack_a);
-    //push_b(stack_a, stack_b);
-    //rotate_a(stack_a);
-    rev_rotate_a(stack_a);
     elem = *stack_a;
     elemb = *stack_b;
     ft_printf("\nSTACK A :\n");

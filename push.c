@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 12:33:58 by jules             #+#    #+#             */
-/*   Updated: 2022/07/04 15:52:59 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/06 15:05:39 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void	push_a(t_list **stack_a, t_list **stack_b)
 {
+	t_list	*elem;
+	elem = lst_index(stack_b, 1);
 	ft_lstadd_front(stack_a, lst_index(stack_b, 0));
+	*stack_b = elem;
+	ft_printf("pa\n");
 }
 
 void	push_b(t_list **stack_a, t_list **stack_b)
 {
+	t_list	*elem;
+	elem = lst_index(stack_a, 1);
 	ft_lstadd_front(stack_b, lst_index(stack_a, 0));
+	*stack_a = elem;
+	ft_printf("pb\n");
 }

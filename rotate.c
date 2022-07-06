@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 15:58:56 by jules             #+#    #+#             */
-/*   Updated: 2022/07/04 16:29:17 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/06 15:07:14 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rotate_a(t_list **stack_a)
 	elem1->next = NULL;
 	elemlast->next = elem1;
 	*stack_a = elem2; 
-	ft_printf("ra");
+	ft_printf("ra\n");
 }
 
 void	rotate_b(t_list **stack_b)
@@ -39,7 +39,7 @@ void	rotate_b(t_list **stack_b)
 	elem1->next = NULL;
 	elemlast->next = elem1;
 	*stack_b = elem2; 
-	ft_printf("rb");
+	ft_printf("rb\n");
 }
 
 void	rotate_r(t_list **stack_a, t_list **stack_b)
@@ -60,5 +60,5 @@ void	rotate_r(t_list **stack_a, t_list **stack_b)
 	elem1->next = NULL;
 	elemlast->next = elem1;
 	*stack_b = elem2;
-	ft_printf("rr");
+	ft_printf("rr\n");
 }

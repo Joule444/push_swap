@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/07/07 18:34:50 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/10 17:39:34 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	rev_rotate_a(t_list **stack_a);
 void	rev_rotate_b(t_list **stack_b);
 void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
 void	trade(int a, int b, t_list **stack_a, t_list **stack_b);
-void	sort(t_list **stack_a, t_list **stack_b);
+void	sort(t_list **stack_a, t_list **stack_b, int start, t_list *pivot);
+int	check_sorted(t_list **stack, int start, int end);
 
  #endif

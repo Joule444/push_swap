@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/07/07 18:34:49 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/10 18:09:14 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
     }
     
     //trade(0, 0, stack_a, stack_b);
-    sort(stack_a, stack_b);
+    sort(stack_a, stack_b, 0, ft_lstlast(*stack_a));
     print_stacks(stack_a, stack_b);//A SUPPRIMER
     
     ft_lstclear(stack_a);

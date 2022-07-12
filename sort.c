@@ -6,64 +6,54 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:05:43 by jules             #+#    #+#             */
-/*   Updated: 2022/07/10 18:07:37 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/12 18:22:48 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sorted(t_list **stack, int start, int end)
+int	check_sorted(t_list **stack, t_list *start, t_list *end)
 {
-	int	i;
 	t_list	*elem;
 
-	i = 0;
 	elem = *stack;
-	while (i < start)
-	{
+	while (elem != start)
 		elem = elem->next;
-		i++;
-	}
-	while (i < end)
+	while (elem != end)
 	{
 		if (elem->content > elem->next->content)
 			return (0);
 		elem = elem->next;
-		i++;
 	}
 	return (1);
 }
 
-void	sort(t_list **stack_a, t_list **stack_b, int start, t_list *pivot)
+void	sort(t_list **stack_a, t_list **stack_b, t_list *start, t_list *pivot)
 {
-	t_list	*elem;
-	int i;
-	int ig;
+	t_list *i;
+	t_list *ig;
 	
-	i = 0;
-	ig = 0;
-	elem = *stack_a;
-	while (i < start)
+	i = *stack_a;
+	ig = *stack_a;
+	while (i != start)
 	{
-		elem = elem->next;
-		i++;
-		ig++;
+		i = i->next;
+		ig = ig->next;
 	}
-	while (elem != pivot)
+	while (i != pivot)
 	{
-		if (elem->content <= pivot->content)
+		if (i->content <= pivot->content)
 		{
 			trade(ig, i, stack_a, stack_b);
-			i++;
-			ig++;
+			i = i->next;
+			ig = ig->next;
 		}
 		else
-			i++;
-		elem = elem->next;
+			i = i->next;
 	}
 	trade(ig, i, stack_a, stack_b);
 	if (!check_sorted(stack_a, 0, ig)) //en dessous du pivot
-		sort(stack_a, stack_b, 0, lst_index(stack_a, ig - 1));
+		sort(stack_a, stack_b, 0, ig);
 	if (!check_sorted(stack_a, ig, i)) //au dessus du pivot
-		sort(stack_a, stack_b, ig, lst_index(stack_a, i));
+		sort(stack_a, stack_b, ig, i);
 }

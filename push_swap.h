@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/07/13 13:19:55 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/14 18:42:31 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_list	**lst_init(int argc, char **argv);
 void	ft_lstclear(t_list **lst);
 int	ft_lstsize(t_list *lst);
 t_list	*lst_index(t_list **list, int index);
+t_list	*lst_previous(t_list **stack, t_list *aim);
 void	swap_a(t_list **stack_a);
 void	swap_b(t_list **stack_b);
 void	swap_s(t_list **stack_a, t_list **stack_b);
@@ -44,10 +45,7 @@ void	rotate_r(t_list **stack_a, t_list **stack_b);
 void	rev_rotate_a(t_list **stack_a);
 void	rev_rotate_b(t_list **stack_b);
 void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
-void	trade(t_list *a, t_list *b, t_list **stack_a, t_list **stack_b);
 void	grab_a(t_list *aim, t_list **stack_a);
-void	sort(t_list **stack_a, t_list **stack_b, t_list *start, t_list *pivot);
-int	check_sorted(t_list **stack, t_list *start, t_list *end);
 void	quicksort(t_list *start, t_list *end, t_list **stack_a, t_list **stack_b);
 
  #endif

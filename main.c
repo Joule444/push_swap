@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/07/13 17:09:10 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/14 18:34:23 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ int main(int argc, char** argv)
     }
     
     quicksort(lst_index(stack_a, 0), ft_lstlast(*stack_a), stack_a, stack_b);
-    //ft_printf("sorted ?%d", check_sorted(stack_a, lst_index(stack_a, 0), ft_lstlast(*stack_a)));
-    //grab_a(lst_index(stack_a, 2), stack_a);
-    //trade(lst_index(stack_a, 4), lst_index(stack_a, 5), stack_a, stack_b);
-    //sort(stack_a, stack_b, *stack_a, ft_lstlast(*stack_a));
-    //print_stacks(stack_a, stack_b);//A SUPPRIMER
+    //ft_printf("min ? %d", check_pivot_min(stack_a, ft_lstlast(*stack_a)));
+    print_stacks(stack_a, stack_b);//A SUPPRIMER
     
     ft_lstclear(stack_a);
     ft_lstclear(stack_b);

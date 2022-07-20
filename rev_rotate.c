@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:29:21 by jules             #+#    #+#             */
-/*   Updated: 2022/07/06 15:07:20 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/20 16:10:31 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rev_rotate_a(t_list **stack_a)
 	elemlast->next = elem1;
 	elemprelast->next = NULL;
 	*stack_a = elemlast;
-	ft_printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	rev_rotate_b(t_list **stack_b)
@@ -39,7 +39,7 @@ void	rev_rotate_b(t_list **stack_b)
 	elemlast->next = elem1;
 	elemprelast->next = NULL;
 	*stack_b = elemlast;
-	ft_printf("rrb\n");
+	write(1, "rrb\n", 4);
 }
 
 void	rev_rotate_r(t_list **stack_a, t_list **stack_b)
@@ -60,5 +60,5 @@ void	rev_rotate_r(t_list **stack_a, t_list **stack_b)
 	elemlast->next = elem1;
 	elemprelast->next = NULL;
 	*stack_b = elemlast;
-	ft_printf("rrr\n");
+	write(1, "rrr\n", 4);
 }

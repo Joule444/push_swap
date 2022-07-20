@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:43:18 by jules             #+#    #+#             */
-/*   Updated: 2022/07/06 14:54:23 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/20 15:24:10 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int	arr_len(char **arr)
 		i++;
 	return (i);
 }
+
 t_list	**lst_init_parse(char **argv)
 {
 	t_list	**list;
 	char	**arr;
-	t_list  *elem;
+	t_list	*elem;
 	int		n;
 	int		i;
 
@@ -35,26 +36,26 @@ t_list	**lst_init_parse(char **argv)
 	if (!list)
 		return (NULL);
 	*list = NULL;
-    while (arr[i])
-    {
-        n = ft_atoi(arr[i]);
-        elem = ft_lstnew(n);
-        ft_lstadd_back(list, elem);
-        i++;
-    }
+	while (arr[i])
+	{
+		n = ft_atoi(arr[i]);
+		elem = ft_lstnew(n);
+		ft_lstadd_back(list, elem);
+		i++;
+	}
 	i = 0;
 	while (arr[i])
-    {
+	{
 		free(arr[i]);
-        i++;
-    }
+		i++;
+	}
 	return (free(arr), list);
 }
 
 t_list	**lst_init(int argc, char **argv)
 {
 	t_list	**list;
-	t_list  *elem;
+	t_list	*elem;
 	int		n;
 	int		i;
 
@@ -63,12 +64,12 @@ t_list	**lst_init(int argc, char **argv)
 		return (NULL);
 	*list = NULL;
 	i = 1;
-    while (i < argc)
-    {
-    	n = ft_atoi(argv[i]);
-    	elem = ft_lstnew(n);
-    	ft_lstadd_back(list, elem);
-    	i++;
-    }
+	while (i < argc)
+	{
+		n = ft_atoi(argv[i]);
+		elem = ft_lstnew(n);
+		ft_lstadd_back(list, elem);
+		i++;
+	}
 	return (list);
 }

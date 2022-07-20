@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/07/14 18:42:31 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/20 18:50:53 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "ft_printf/ft_printf.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char sep);
 
 typedef struct s_list
@@ -31,7 +33,7 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	**lst_init_parse(char **argv);
 t_list	**lst_init(int argc, char **argv);
 void	ft_lstclear(t_list **lst);
-int	ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 t_list	*lst_index(t_list **list, int index);
 t_list	*lst_previous(t_list **stack, t_list *aim);
 void	swap_a(t_list **stack_a);
@@ -46,6 +48,7 @@ void	rev_rotate_a(t_list **stack_a);
 void	rev_rotate_b(t_list **stack_b);
 void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
 void	grab_a(t_list *aim, t_list **stack_a);
-void	quicksort(t_list *start, t_list *end, t_list **stack_a, t_list **stack_b);
+// void	quicksort(t_list *start, t_list *end, t_list **stack_a, t_list **stack_b);
+void	sort(t_list **stack_a, t_list **stack_b, t_list *pivot);
 
  #endif

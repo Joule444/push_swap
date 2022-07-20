@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:49:21 by jules             #+#    #+#             */
-/*   Updated: 2022/07/12 18:13:34 by jules            ###   ########.fr       */
+/*   Updated: 2022/07/20 16:09:45 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap_a(t_list **stack_a)
 	tmp = lst_index(stack_a, 0)->content;
 	lst_index(stack_a, 0)->content = lst_index(stack_a, 1)->content;
 	lst_index(stack_a, 1)->content = tmp;
-	ft_printf("sa\n");
+	write(1, "sa\n", 3);
 }
 
 void	swap_b(t_list **stack_b)
@@ -29,7 +29,7 @@ void	swap_b(t_list **stack_b)
 	tmp = lst_index(stack_b, 0)->content;
 	lst_index(stack_b, 0)->content = lst_index(stack_b, 1)->content;
 	lst_index(stack_b, 1)->content = tmp;
-	ft_printf("sb\n");
+	write(1, "sb\n", 3);
 }
 
 void	swap_s(t_list **stack_a, t_list **stack_b)
@@ -42,5 +42,5 @@ void	swap_s(t_list **stack_a, t_list **stack_b)
 	tmp = lst_index(stack_b, 0)->content;
 	lst_index(stack_b, 0)->content = lst_index(stack_b, 1)->content;
 	lst_index(stack_b, 1)->content = tmp;
-	ft_printf("ss\n");
+	write(1, "ss\n", 3);
 }

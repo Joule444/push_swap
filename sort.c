@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:22:34 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/07/27 17:46:39 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:24:03 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_sorted(t_list **stack, t_list *start, t_list *end)
 	return (1);
 }
 
-void	sort(t_list **stack_a, t_list **stack_b, t_list *pivot)
+void	sort_up(t_list **stack_a, t_list **stack_b, t_list *pivot)
 {
 	t_list	*elem_a;
 	int		size_b;
@@ -61,16 +61,69 @@ void	sort(t_list **stack_a, t_list **stack_b, t_list *pivot)
 	if (size_b > 0)
 		empty_b(stack_a, stack_b);
 	if (!check_sorted(stack_a, *stack_a, lst_index(stack_a, size_b - 1)))
-		sort(stack_a, stack_b, lst_index(stack_a, size_b - 1));
-	if (check_sorted(stack_a, *stack_a, lst_index(stack_a, size_b - 1)))
 	{
+		sort_up(stack_a, stack_b, lst_index(stack_a, size_b - 1));
+		return ;
+	}
+}
+
+void	sort3(t_list **stack_a, t_list **stack_b, t_list *pivot)
+{
+	t_list	*elem_a;
+	t_list	*first_elem;
+	int		size_b;
+
+	elem_a = *stack_a;
+	first_elem = *stack_a;
+	while (elem_a != pivot)
+	{
+		if (elem_a->content >= pivot->content)
+			push_b(stack_a, stack_b);
+		else
+			rotate_a(stack_a);
+		elem_a = *stack_a;
+	}
+	size_b = ft_lstsize(*stack_b);
+	rotate_a(stack_a);
+	if (size_b > 0)
+		empty_b(stack_a, stack_b);
+	else
+	{
+		grab_a(first_elem, stack_a);
+		sort3(stack_a, stack_b, lst_previous(stack_a, pivot));
+		return ;
+	}
+}
+
+void	sort(t_list **stack_a, t_list **stack_b, t_list *pivot)
+{
+	t_list	*elem_a;
+	int		size_b;
+
+	elem_a = *stack_a;
+	while (elem_a != pivot)
+	{
+		if (elem_a->content >= pivot->content)
+			push_b(stack_a, stack_b);
+		else
+			rotate_a(stack_a);
+		elem_a = *stack_a;
+	}
+	size_b = ft_lstsize(*stack_b);
+	rotate_a(stack_a);
+	if (size_b > 0)
+		empty_b(stack_a, stack_b);
+	while (!check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)))
+	{
+		if (!check_sorted(stack_a, *stack_a, lst_index(stack_a, size_b - 1)))
+			sort_up(stack_a, stack_b, lst_index(stack_a, size_b - 1));
 		elem_a = *stack_a;
 		while (elem_a->content >= pivot->content)
 		{
 			rotate_a(stack_a);
 			elem_a = *stack_a;
 		}
+		if (!check_sorted(stack_a, *stack_a, lst_previous(stack_a, pivot)))
+			sort3(stack_a, stack_b, lst_previous(stack_a, pivot));
 	}
-	if (!check_sorted(stack_a, *stack_a, lst_previous(stack_a, pivot)))
-		sort(stack_a, stack_b, lst_previous(stack_a, pivot));
 }

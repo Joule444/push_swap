@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/07/24 16:30:18 by jules            ###   ########.fr       */
+/*   Updated: 2022/08/19 18:01:56 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int	main(int argc, char **argv)
 	}
 	else
 	    return (0);
-	sort(stack_a, stack_b, ft_lstlast(*stack_a));
+	//sort(stack_a, stack_b, ft_lstlast(*stack_a));
+	//prep_fusion(stack_a);
+	sort(stack_a, stack_b);
 	ft_lstclear(stack_a);
 	ft_lstclear(stack_b);
 	return (free(stack_a), free(stack_b), 0);

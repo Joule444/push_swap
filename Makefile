@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+         #
+#    By: jules <jules@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 16:02:47 by jthuysba          #+#    #+#              #
-#    Updated: 2022/07/20 18:29:50 by jthuysba         ###   ########.fr        #
+#    Updated: 2022/08/19 15:36:14 by jules            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES:=	main ft_atoi ft_split grab lst_fonctions lst_index lst_init lst_previous push sort rev_rotate rotate swap
+FILES:=	main ft_atoi ft_split grab lst_fonctions lst_index lst_init lst_previous push bubble_sort rev_rotate rotate swap
 FILES_BONUS:=
 
 NAME:= push_swap

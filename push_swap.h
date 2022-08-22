@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/07/24 16:30:29 by jules            ###   ########.fr       */
+/*   Updated: 2022/08/22 20:56:33 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_lstclear(t_list **lst);
 int		ft_lstsize(t_list *lst);
 t_list	*lst_index(t_list **list, int index);
 t_list	*lst_previous(t_list **stack, t_list *aim);
+
+//INSTRUCTIONS
 void	swap_a(t_list **stack_a);
 void	swap_b(t_list **stack_b);
 void	swap_s(t_list **stack_a, t_list **stack_b);
@@ -47,8 +49,13 @@ void	rotate_r(t_list **stack_a, t_list **stack_b);
 void	rev_rotate_a(t_list **stack_a);
 void	rev_rotate_b(t_list **stack_b);
 void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
+
 void	grab_a(t_list *aim, t_list **stack_a);
-// void	quicksort(t_list *start, t_list *end, t_list **stack_a, t_list **stack_b);
-void	sort(t_list **stack_a, t_list **stack_b, t_list *pivot);
+void	sort(t_list **stack_a, t_list **stack_b);
+void	prep_fusion(t_list **stack_a);
+void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_b);
+void	split_stack(t_list **stack_a, t_list **stack_b, t_list *end);
+int	check_sorted(t_list **stack, t_list *start, t_list *end);
+int	check_sorted_rev(t_list **stack, t_list *start, t_list *end);
 
  #endif

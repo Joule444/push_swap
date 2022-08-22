@@ -6,11 +6,11 @@
 #    By: jules <jules@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 16:02:47 by jthuysba          #+#    #+#              #
-#    Updated: 2022/08/19 15:36:14 by jules            ###   ########.fr        #
+#    Updated: 2022/08/22 20:57:39 by jules            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES:=	main ft_atoi ft_split grab lst_fonctions lst_index lst_init lst_previous push bubble_sort rev_rotate rotate swap
+FILES:=	main ft_atoi ft_split grab lst_fonctions lst_index lst_init lst_previous push bubble_sort rev_rotate rotate swap check_sorted split_stack
 FILES_BONUS:=
 
 NAME:= push_swap

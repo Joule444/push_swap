@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:48:34 by jules             #+#    #+#             */
-/*   Updated: 2022/08/22 22:45:20 by jules            ###   ########.fr       */
+/*   Updated: 2022/08/23 17:31:47 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	get_mid(t_list **stack)
 
 	i = 0;
 	size = ft_lstsize(*stack);
-	tab = malloc(sizeof(int) * size);
+	tab = malloc(sizeof(int) * size); 
 	while (i < size)
 	{
 		lower = *stack;
@@ -73,7 +73,7 @@ int	get_mid(t_list **stack)
 		del_elem(stack, lower);	
 		i++;
 	}
-	return (free(stack), tab[ft_lstsize(*stack) / 2]);
+	return (free(stack), tab[size / 2]);
 }
 
 void	split_stack(t_list **stack_a, t_list **stack_b, t_list *end)
@@ -91,4 +91,9 @@ void	split_stack(t_list **stack_a, t_list **stack_b, t_list *end)
 			rotate_a(stack_a);
 		elem = *stack_a;
 	}
+	if (elem->content < mid)
+		push_b(stack_a, stack_b);
+	else
+		rotate_a(stack_a);
+	elem = *stack_a;
 }

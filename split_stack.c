@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:48:34 by jules             #+#    #+#             */
-/*   Updated: 2022/09/09 13:55:16 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:26:46 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,17 @@ void	split_stack(t_list **stack_a, t_list **stack_b)
 {
 	int				*tab;
 	int				size;
+	int				i;
 	unsigned int	size_diff;
 
 	tab = get_mid(stack_copy(stack_a));
 	size = ft_lstsize(*stack_a);
-	push_part(stack_a, stack_b, tab[0], tab[size / 8]);
-	push_part(stack_a, stack_b, tab[size / 8], tab[size / 4]);
-	push_part(stack_a, stack_b, tab[size / 4], tab[(3 * size) / 8]);
-	push_part(stack_a, stack_b, tab[(3 * size) / 8], tab[size / 2]);
-	push_part(stack_a, stack_b, tab[size / 2], tab[(5 * size) / 8]);
-	push_part(stack_a, stack_b, tab[(5 * size) / 8], tab[(3 * size) / 4]);
-	push_part(stack_a, stack_b, tab[(3 * size) / 4], tab[(7 * size) / 8]);
+	i = 0;
+	while (i < 9)
+	{
+		push_part(stack_a, stack_b, tab[(i * size) / 10], tab[((i + 1) * size) / 10]);
+		i++;
+	}
 	size_diff = ft_lstsize(*stack_a) - ft_lstsize(*stack_b);
 	while (size_diff > 1)
 	{

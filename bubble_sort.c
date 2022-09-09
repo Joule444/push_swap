@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 15:31:05 by jules             #+#    #+#             */
-/*   Updated: 2022/09/09 13:55:47 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:23:58 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	sort_elem_back(t_list **stack_a, t_list **stack_b, t_list *bubble_a, t_list
 {
 	t_list	*elem_a;
 	t_list	*elem_b;
-	
+
 	elem_a = *stack_a;
 	elem_b = *stack_b;
 	while (elem_a != bubble_a && elem_b != bubble_b && elem_a->content <= bubble_a->content && elem_b->content >= bubble_b->content)

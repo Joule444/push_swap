@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:48:34 by jules             #+#    #+#             */
-/*   Updated: 2022/09/09 14:26:46 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/09 16:09:06 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	del_elem(t_list	**stack, t_list *aim)
 	elem->next = tmp;
 }
 
-int	*get_mid(t_list **stack)
+int	*get_tab(t_list **stack)
 {
 	int		i;
 	int		size;
@@ -101,7 +101,7 @@ void	split_stack(t_list **stack_a, t_list **stack_b)
 	int				i;
 	unsigned int	size_diff;
 
-	tab = get_mid(stack_copy(stack_a));
+	tab = get_tab(stack_copy(stack_a));
 	size = ft_lstsize(*stack_a);
 	i = 0;
 	while (i < 9)

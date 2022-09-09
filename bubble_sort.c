@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 15:31:05 by jules             #+#    #+#             */
-/*   Updated: 2022/08/29 21:25:26 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:55:47 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_
 {
 	t_list	*bubble_a;
 	t_list	*bubble_b;
-	
+
 	sort_elem(stack_a, stack_b, end_a, end_b);
 	bubble_a = *stack_a;
 	bubble_b = *stack_b;
@@ -114,7 +114,7 @@ void	sort(t_list **stack_a, t_list **stack_b)
 {
 	if (check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)))
 		return ;
-	split_stack(stack_a, stack_b, ft_lstlast(*stack_a));
+	split_stack(stack_a, stack_b);
 	bubble_sort(stack_a, stack_b, ft_lstlast(*stack_a), ft_lstlast(*stack_b));
 	empty_b(stack_a, stack_b);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/09 16:11:12 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:33:22 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_lstclear(t_list **lst);
 int		ft_lstsize(t_list *lst);
 t_list	*lst_index(t_list **list, int index);
 t_list	*lst_previous(t_list **stack, t_list *aim);
+
+void	print_stacks(t_list **stack_a, t_list **stack_b); //delete
 
 //INSTRUCTIONS
 void	swap_a(t_list **stack_a);

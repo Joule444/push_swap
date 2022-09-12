@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 15:31:05 by jules             #+#    #+#             */
-/*   Updated: 2022/09/09 17:41:46 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/12 16:15:39 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void	sort_elem_back(t_list **stack_a, t_list **stack_b)
 
 	break_a = get_break(stack_a);
 	break_b = get_break_rev(stack_b);
-	if (break_a == NULL || break_b == NULL)
-		return ;
 	rev_rotate_r(stack_a, stack_b);
 	rev_rotate_r(stack_a, stack_b);
 	rev_rotate_r(stack_a, stack_b);
@@ -131,9 +129,8 @@ void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_
 	bubble_b = *stack_b;
 	rotate_r(stack_a, stack_b);
 	sort_elem_back(stack_a, stack_b);
-	rotate_r(stack_a, stack_b);
-	if (!check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)) || !check_sorted_rev(stack_b, *stack_b, ft_lstlast(*stack_b)))
-		bubble_sort(stack_a, stack_b, lst_previous(stack_a, bubble_a), lst_previous(stack_b, bubble_b));
+	if (!check_sorted(stack_a, *stack_a, bubble_a) || !check_sorted_rev(stack_b, *stack_b, bubble_b))
+		bubble_sort(stack_a, stack_b, bubble_a, bubble_b);
 }
 
 void	sort(t_list **stack_a, t_list **stack_b)
@@ -142,5 +139,6 @@ void	sort(t_list **stack_a, t_list **stack_b)
 		return ;
 	split_stack(stack_a, stack_b);
 	bubble_sort(stack_a, stack_b, ft_lstlast(*stack_a), ft_lstlast(*stack_b));
+	rotate_r(stack_a, stack_b);
 	empty_b(stack_a, stack_b);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:48:34 by jules             #+#    #+#             */
-/*   Updated: 2022/09/09 16:09:06 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:31:53 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,32 @@ void	split_stack(t_list **stack_a, t_list **stack_b)
 	tab = get_tab(stack_copy(stack_a));
 	size = ft_lstsize(*stack_a);
 	i = 0;
-	while (i < 9)
+	if (size >= 300)
 	{
-		push_part(stack_a, stack_b, tab[(i * size) / 10], tab[((i + 1) * size) / 10]);
-		i++;
-	}
-	size_diff = ft_lstsize(*stack_a) - ft_lstsize(*stack_b);
-	while (size_diff > 1)
-	{
-		push_a(stack_a, stack_b);
+		while (i < 24)
+		{
+			push_part(stack_a, stack_b, tab[(i * size) / 25], tab[((i + 1) * size) / 25]);
+			i++;
+		}
 		size_diff = ft_lstsize(*stack_a) - ft_lstsize(*stack_b);
+		while (size_diff > 1)
+		{
+			push_a(stack_a, stack_b);
+			size_diff = ft_lstsize(*stack_a) - ft_lstsize(*stack_b);
+		}
+	}
+	else
+	{
+		while (i < 9)
+		{
+			push_part(stack_a, stack_b, tab[(i * size) / 10], tab[((i + 1) * size) / 10]);
+			i++;
+		}
+		size_diff = ft_lstsize(*stack_a) - ft_lstsize(*stack_b);
+		while (size_diff > 1)
+		{
+			push_a(stack_a, stack_b);
+			size_diff = ft_lstsize(*stack_a) - ft_lstsize(*stack_b);
+		}
 	}
 }

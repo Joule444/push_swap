@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 12:28:51 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:07:52 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,18 @@ void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
 
 void	sort(t_list **stack_a, t_list **stack_b);
 void	prep_fusion(t_list **stack_a);
-void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_b);
+void	bubble_sort(t_list **stack_a, t_list **stack_b,
+			t_list *end_a, t_list *end_b);
 void	split_stack(t_list **stack_a, t_list **stack_b);
 int		check_sorted(t_list **stack, t_list *start, t_list *end);
 int		check_sorted_rev(t_list **stack, t_list *start, t_list *end);
 int		*get_tab(t_list **stack);
 t_list	**stack_copy(t_list **stack);
-int	*get_tab(t_list **stack);
+int		*get_tab(t_list **stack);
 t_list	*get_break(t_list **stack);
 t_list	*get_break_rev(t_list **stack);
+t_list	*get_back_break(t_list **stack, t_list *start);
+t_list	*get_back_break_rev(t_list **stack, t_list *start);
+int		better_rotate(t_list **stack, int min, int max);
 
- #endif
+#endif

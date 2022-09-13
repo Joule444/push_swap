@@ -6,28 +6,69 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 20:48:34 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 12:20:55 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:56:54 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	better_rotate(t_list **stack, int min, int max)
+{
+	t_list	*elem;
+	int		dist_rot;
+	int		dist_rev;
+
+	elem = *stack;
+	dist_rot = 0;
+	dist_rev = 0;
+	while (!(elem->content >= min && elem->content < max))
+	{
+		dist_rot++;
+		elem = elem->next;
+	}
+	elem = ft_lstlast(*stack);
+	while (!(elem->content >= min && elem->content < max))
+	{
+		dist_rev++;
+		elem = lst_previous(stack, elem);
+	}
+	if (dist_rot - dist_rev <= 0)
+		return (1);
+	else
+		return (-1);
+}
+
+int	find_portion(t_list **stack, int min, int max)
+{
+	t_list	*elem;
+
+	elem = *stack;
+	while (elem)
+	{
+		if (elem->content >= min && elem->content < max)
+			return (1);
+		elem = elem->next;
+	}
+	return (0);
+}
+
 void	push_part(t_list **stack_a, t_list **stack_b, int min, int max)
 {
-	t_list	*end;
-
-	end = ft_lstlast(*stack_a);
-	while ((*stack_a) != end)
+	while (find_portion(stack_a, min, max))
 	{
-		if ((*stack_a)->content >= min && (*stack_a)->content < max)
+		if (better_rotate(stack_a, min, max) > 0)
+		{
+			while (!((*stack_a)->content >= min && (*stack_a)->content < max))
+				rotate_a(stack_a);
 			push_b(stack_a, stack_b);
+		}
 		else
-			rotate_a(stack_a);
+		{
+			while (!((*stack_a)->content >= min && (*stack_a)->content < max))
+				rev_rotate_a(stack_a);
+			push_b(stack_a, stack_b);
+		}
 	}
-	if ((*stack_a)->content >= min && (*stack_a)->content < max)
-		push_b(stack_a, stack_b);
-	else
-		rotate_a(stack_a);
 }
 
 void	split_presort(t_list **stack_a, t_list **stack_b, int div)
@@ -59,7 +100,7 @@ void	split_stack(t_list **stack_a, t_list **stack_b)
 
 	size = ft_lstsize(*stack_a);
 	if (size >= 300)
-		split_presort(stack_a, stack_b, 24);
+		split_presort(stack_a, stack_b, 26);
 	else if (size >= 10)
 		split_presort(stack_a, stack_b, 10);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/08/19 18:01:56 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/13 14:02:09 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stacks(t_list **stack_a, t_list **stack_b) //A SUPPRIMER
+void	print_stacks(t_list **stack_a, t_list **stack_b) //to delete
 {
 	t_list	*elem;
 	t_list	*elemb;
@@ -51,9 +51,7 @@ int	main(int argc, char **argv)
 		*stack_b = NULL;
 	}
 	else
-	    return (0);
-	//sort(stack_a, stack_b, ft_lstlast(*stack_a));
-	//prep_fusion(stack_a);
+		return (0);
 	sort(stack_a, stack_b);
 	ft_lstclear(stack_a);
 	ft_lstclear(stack_b);

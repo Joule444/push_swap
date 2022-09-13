@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 15:31:05 by jules             #+#    #+#             */
-/*   Updated: 2022/09/12 16:15:39 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/13 12:27:15 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	sort_elem(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_b)
 {
 	while ((*stack_a) != end_a && (*stack_b) != end_b)
 	{
-		if ((*stack_a)->content > (*stack_a)->next->content && (*stack_b)->content < (*stack_b)->next->content)
+		if ((*stack_a)->content > (*stack_a)->next->content
+			&& (*stack_b)->content < (*stack_b)->next->content)
 			swap_s(stack_a, stack_b);
 		else if ((*stack_a)->content > (*stack_a)->next->content)
 			swap_a(stack_a);
@@ -45,46 +46,6 @@ void	sort_elem(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_b)
 	}
 }
 
-t_list	*get_break(t_list **stack)
-{
-	t_list	*elem;
-	t_list	*check;
-
-	elem = *stack;
-	while (elem->next)
-	{
-		check = elem->next;
-		while (check)
-		{
-			if (check->content < elem->content)
-				return (elem);
-			check = check->next;
-		}
-		elem = elem->next;
-	}
-	return (elem);
-}
-
-t_list	*get_break_rev(t_list **stack)
-{
-	t_list	*elem;
-	t_list	*check;
-
-	elem = *stack;
-	while (elem->next)
-	{
-		check = elem->next;
-		while (check)
-		{
-			if (check->content > elem->content)
-				return (elem);
-			check = check->next;
-		}
-		elem = elem->next;
-	}
-	return (elem);
-}
-
 void	sort_elem_back(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*break_a;
@@ -97,7 +58,8 @@ void	sort_elem_back(t_list **stack_a, t_list **stack_b)
 	rev_rotate_r(stack_a, stack_b);
 	while (*stack_a != break_a && *stack_b != break_b)
 	{
-		if ((*stack_a)->content > (*stack_a)->next->content && (*stack_b)->content < (*stack_b)->next->content)
+		if ((*stack_a)->content > (*stack_a)->next->content
+			&& (*stack_b)->content < (*stack_b)->next->content)
 			swap_s(stack_a, stack_b);
 		else if ((*stack_a)->content > (*stack_a)->next->content)
 			swap_a(stack_a);
@@ -129,7 +91,8 @@ void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_
 	bubble_b = *stack_b;
 	rotate_r(stack_a, stack_b);
 	sort_elem_back(stack_a, stack_b);
-	if (!check_sorted(stack_a, *stack_a, bubble_a) || !check_sorted_rev(stack_b, *stack_b, bubble_b))
+	if (!check_sorted(stack_a, *stack_a, bubble_a)
+		|| !check_sorted_rev(stack_b, *stack_b, bubble_b))
 		bubble_sort(stack_a, stack_b, bubble_a, bubble_b);
 }
 

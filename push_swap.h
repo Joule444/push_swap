@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/12 15:33:22 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/13 12:28:51 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int		ft_lstsize(t_list *lst);
 t_list	*lst_index(t_list **list, int index);
 t_list	*lst_previous(t_list **stack, t_list *aim);
 
-void	print_stacks(t_list **stack_a, t_list **stack_b); //delete
-
 //INSTRUCTIONS
 void	swap_a(t_list **stack_a);
 void	swap_b(t_list **stack_b);
@@ -52,7 +50,6 @@ void	rev_rotate_a(t_list **stack_a);
 void	rev_rotate_b(t_list **stack_b);
 void	rev_rotate_r(t_list **stack_a, t_list **stack_b);
 
-void	grab_a(t_list *aim, t_list **stack_a);
 void	sort(t_list **stack_a, t_list **stack_b);
 void	prep_fusion(t_list **stack_a);
 void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_b);
@@ -61,5 +58,8 @@ int		check_sorted(t_list **stack, t_list *start, t_list *end);
 int		check_sorted_rev(t_list **stack, t_list *start, t_list *end);
 int		*get_tab(t_list **stack);
 t_list	**stack_copy(t_list **stack);
+int	*get_tab(t_list **stack);
+t_list	*get_break(t_list **stack);
+t_list	*get_break_rev(t_list **stack);
 
  #endif

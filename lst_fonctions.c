@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_fonctions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:22:11 by jules             #+#    #+#             */
-/*   Updated: 2022/07/04 15:53:06 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/13 12:23:29 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,4 @@ void	ft_lstclear(t_list **lst)
 			*lst = elem;
 		}
 	}
-}
-
-int	ft_lstsize(t_list *lst)
-{
-	int	a;
-
-	a = 0;
-	if (lst)
-	{
-		while (lst)
-		{
-			a++;
-			lst = lst->next;
-		}
-	}
-	return (a);
 }

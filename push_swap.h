@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 16:07:52 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:51:40 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+
+
 int		ft_atoi(const char *str);
 char	**ft_split(char const *s, char sep);
 
@@ -25,6 +27,8 @@ typedef struct s_list
 	int				content;
 	struct s_list	*next;
 }	t_list;
+
+void	print_stack(t_list **stack);
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -65,5 +69,7 @@ t_list	*get_break_rev(t_list **stack);
 t_list	*get_back_break(t_list **stack, t_list *start);
 t_list	*get_back_break_rev(t_list **stack, t_list *start);
 int		better_rotate(t_list **stack, int min, int max);
+
+void	push_part(t_list **stack_a, t_list **stack_b, int min, int max);
 
 #endif

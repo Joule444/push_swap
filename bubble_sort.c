@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 15:31:05 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 12:27:15 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/18 15:14:50 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,96 @@ void	bubble_sort(t_list **stack_a, t_list **stack_b, t_list *end_a, t_list *end_
 		bubble_sort(stack_a, stack_b, bubble_a, bubble_b);
 }
 
+// void	sort(t_list **stack_a, t_list **stack_b)
+// {
+// 	if (check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)))
+// 		return ;
+// 	split_stack(stack_a, stack_b);
+// 	bubble_sort(stack_a, stack_b, ft_lstlast(*stack_a), ft_lstlast(*stack_b));
+// 	rotate_r(stack_a, stack_b);
+// 	empty_b(stack_a, stack_b);
+// }
+
+void	silent_rotate(t_list **stack)
+{
+	t_list	*elem1;
+	t_list	*elem2;
+	t_list	*elemlast;
+
+	elem1 = lst_index(stack, 0);
+	elem2 = lst_index(stack, 1);
+	elemlast = ft_lstlast(elem1);
+	elem1->next = NULL;
+	elemlast->next = elem1;
+	*stack = elem2;
+}
+
+t_list	*get_break_rev(t_list **stack)
+{
+	t_list	*start;
+	t_list	*elem;
+	t_list	*check;
+
+	start = *stack;
+	while ((*stack)->content <= start->content)
+		silent_rotate(stack);
+	elem = *stack;
+	while (elem->next)
+	{
+		check = elem->next;
+		while (check)
+		{
+			if (check->content > elem->content)
+			{
+				while ((*stack) != start)
+					silent_rotate(stack);
+				return (elem);
+			}
+			check = check->next;
+		}
+		elem = elem->next;
+	}
+	while ((*stack) != start)
+		silent_rotate(stack);
+	return (elem);
+}
+
+void	sort_stack(t_list **stack, t_list *end)
+{
+	t_list	*start;
+	t_list	*bubble;
+
+	while (*stack != end)
+	{
+		if ((*stack)->content < (*stack)->next->content)
+			swap_b(stack);
+		rotate_b(stack);
+	}
+	bubble = *stack;
+	start = get_break_rev(stack);
+	(void) bubble;
+	(void) start;
+ 	rev_rotate_b(stack);
+	rev_rotate_b(stack);
+	while (*stack != start)
+	{
+		if ((*stack)->content < (*stack)->next->content)
+			swap_b(stack);
+		rev_rotate_b(stack);
+	}
+	if ((*stack)->content < (*stack)->next->content)
+		swap_b(stack);
+	// if (!check_sorted_rev(stack, *stack, bubble))
+	// 	sort_stack(stack, lst_previous(stack, bubble));
+}
+
 void	sort(t_list **stack_a, t_list **stack_b)
 {
-	if (check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)))
-		return ;
-	split_stack(stack_a, stack_b);
-	bubble_sort(stack_a, stack_b, ft_lstlast(*stack_a), ft_lstlast(*stack_b));
-	rotate_r(stack_a, stack_b);
-	empty_b(stack_a, stack_b);
+	int	*tab;
+	int	size;
+
+	tab = get_tab(stack_copy(stack_a));
+	size = ft_lstsize(*stack_a);
+	push_part(stack_a, stack_b, tab[0], tab[size/ 2]);
+	sort_stack(stack_b, ft_lstlast(*stack_b));
 }

@@ -3,33 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 14:02:09 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:51:15 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stacks(t_list **stack_a, t_list **stack_b) //to delete
+void	print_stack(t_list **stack) //to delete
 {
 	t_list	*elem;
-	t_list	*elemb;
 
-	elem = *stack_a;
-	elemb = *stack_b;
-	printf("\nSTACK A :\n");
+	elem = *stack;
 	while (elem)
 	{
 		printf("%d\n", elem->content);
 		elem = elem->next;
-	}
-	printf("\nSTACK B :\n");
-	while (elemb)
-	{
-		printf("%d\n", elemb->content);
-		elemb = elemb->next;
 	}
 }
 

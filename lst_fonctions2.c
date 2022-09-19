@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 15:51:53 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 12:33:50 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:35:21 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_list	*lst_previous(t_list **stack, t_list *aim)
 
 	elem = *stack;
 	if (elem == aim)
-		return (*stack);
+		return (ft_lstlast(*stack));
 	while (elem->next != aim)
 		elem = elem->next;
 	return (elem);

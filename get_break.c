@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:25:39 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/09/13 12:26:05 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:16:57 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,6 @@ t_list	*get_break(t_list **stack)
 		while (check)
 		{
 			if (check->content < elem->content)
-				return (elem);
-			check = check->next;
-		}
-		elem = elem->next;
-	}
-	return (elem);
-}
-
-t_list	*get_break_rev(t_list **stack)
-{
-	t_list	*elem;
-	t_list	*check;
-
-	elem = *stack;
-	while (elem->next)
-	{
-		check = elem->next;
-		while (check)
-		{
-			if (check->content > elem->content)
 				return (elem);
 			check = check->next;
 		}

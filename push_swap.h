@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/18 14:51:40 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/20 15:32:28 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,12 @@ int		check_sorted(t_list **stack, t_list *start, t_list *end);
 int		check_sorted_rev(t_list **stack, t_list *start, t_list *end);
 int		*get_tab(t_list **stack);
 t_list	**stack_copy(t_list **stack);
-int		*get_tab(t_list **stack);
-t_list	*get_break(t_list **stack);
-t_list	*get_break_rev(t_list **stack);
-t_list	*get_back_break(t_list **stack, t_list *start);
-t_list	*get_back_break_rev(t_list **stack, t_list *start);
-int		better_rotate(t_list **stack, int min, int max);
-
+t_list	*get_top(t_list **stack);
+t_list	*get_bottom(t_list **stack);
+int		better_rotate(t_list **stack, t_list *aim);
+int		better_rotate_portion(t_list **stack, int min, int max);
+void	grab_elem_b(t_list *elem, t_list **stack_b);
 void	push_part(t_list **stack_a, t_list **stack_b, int min, int max);
+void	chunk_sort(t_list **stack_a, t_list **stack_b);
 
 #endif

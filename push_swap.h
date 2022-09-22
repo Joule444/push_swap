@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/20 15:32:28 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:00:49 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_list	**stack_copy(t_list **stack);
 t_list	*get_top(t_list **stack);
 t_list	*get_bottom(t_list **stack);
 int		better_rotate(t_list **stack, t_list *aim);
-int		better_rotate_portion(t_list **stack, int min, int max);
+int		better_rotate_portion(t_list **stack, int max);
 void	grab_elem_b(t_list *elem, t_list **stack_b);
 void	push_part(t_list **stack_a, t_list **stack_b, int min, int max);
 void	chunk_sort(t_list **stack_a, t_list **stack_b);

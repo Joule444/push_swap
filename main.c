@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/09/20 13:33:58 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:38:53 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		return (0);
-	chunk_sort(stack_a, stack_b);
+	sort(stack_a, stack_b);
 	ft_lstclear(stack_a);
 	ft_lstclear(stack_b);
 	return (free(stack_a), free(stack_b), 0);

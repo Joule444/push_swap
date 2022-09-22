@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   better_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:17:11 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/09/20 16:48:16 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:59:54 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	better_rotate(t_list **stack, t_list *aim)
 		return (-1);
 }
 
-int	better_rotate_portion(t_list **stack, int min, int max)
+int	better_rotate_portion(t_list **stack, int max)
 {
 	t_list	*elem;
 	int		dist_rot;
@@ -47,13 +47,13 @@ int	better_rotate_portion(t_list **stack, int min, int max)
 	elem = *stack;
 	dist_rot = 0;
 	dist_rev = 0;
-	while (!(elem->content >= min && elem->content < max))
+	while (!(elem->content < max))
 	{
 		dist_rot++;
 		elem = elem->next;
 	}
 	elem = ft_lstlast(*stack);
-	while (!(elem->content >= min && elem->content < max))
+	while (!(elem->content < max))
 	{
 		dist_rev++;
 		elem = lst_previous(stack, elem);

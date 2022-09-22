@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:24:17 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/09/20 17:50:42 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:36:12 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_portion(t_list **stack, int min, int max)
+int	find_portion(t_list **stack, int max)
 {
 	t_list	*elem;
 
 	elem = *stack;
 	while (elem)
 	{
-		if (elem->content >= min && elem->content < max)
+		if (elem->content < max)
 			return (1);
 		elem = elem->next;
 	}
@@ -54,20 +54,20 @@ int	is_stack_max(t_list *elem, t_list **stack)
 	return (1);
 }
 
-t_list	*get_min(t_list **stack_b)
+t_list	*get_max(t_list **stack_b)
 {
 	t_list	*elem;
-	t_list	*min;
+	t_list	*max;
 
 	elem = *stack_b;
-	min = elem;
+	max = elem;
 	while (elem)
 	{
-		if (elem->content < min->content)
-			min = elem;
+		if (elem->content > max->content)
+			max = elem;
 		elem = elem->next;
 	}
-	return (min);
+	return (max);
 }
 
 void	grab_spot(t_list *aim, t_list **stack)
@@ -75,9 +75,12 @@ void	grab_spot(t_list *aim, t_list **stack)
 	t_list	*elem;
 
 	elem = *stack;
-	while (!(elem->next && elem->content <= aim->content && elem->next->content >= aim->content)
-		|| !(elem->next) && elem->content <= aim->content && (*stack)->content >= aim->content)
+	while (!(elem->next && elem->content >= aim->content && elem->next->content <= aim->content))
+	{
+		if (!elem->next)
+			return ;
 		elem = elem->next;
+	}
 	grab_elem_b(elem->next, stack);
 }
 
@@ -89,7 +92,7 @@ void	find_spot(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_b) >= 2)
 	{
 		if (is_stack_min(elem, stack_b) || is_stack_max(elem, stack_b))
-			grab_elem_b(get_min(stack_b), stack_b);
+			grab_elem_b(get_max(stack_b), stack_b);
 		else
 			grab_spot(elem, stack_b);
 		push_b(stack_a, stack_b);
@@ -98,22 +101,35 @@ void	find_spot(t_list **stack_a, t_list **stack_b)
 		push_b(stack_a, stack_b);
 }
 
-void	chunk_sort(t_list **stack_a, t_list **stack_b)
+void	sort_chunk(t_list **stack_a, t_list **stack_b, int max)
+{
+	while (find_portion(stack_a, max))
+	{
+		if (better_rotate_portion(stack_a, max) == 1)
+			while (!((*stack_a)->content < max))
+				rotate_a(stack_a);
+		else
+			while (!((*stack_a)->content < max))
+				rev_rotate_a(stack_a);
+		find_spot(stack_a, stack_b);
+	}
+}
+
+void	sort(t_list **stack_a, t_list **stack_b)
 {
 	int	*tab;
 	int	size;
+	int x;
+	int	chunks;
 
 	tab = get_tab(stack_copy(stack_a));
 	size = ft_lstsize(*stack_a);
-	while (find_portion(stack_a, tab[0], tab[size / 5]))
+	x = 1;
+	chunks = 11;
+	while (x <= chunks)
 	{
-		if (better_rotate_portion(stack_a, tab[0], tab[size / 5]) == 1)
-			while (!((*stack_a)->content >= tab[0] && (*stack_a)->content < tab[size / 5]))
-				rotate_a(stack_a);
-		else
-			while (!((*stack_a)->content >= tab[0] && (*stack_a)->content < tab[size / 5]))
-				rev_rotate_a(stack_a);
-		find_spot(stack_a, stack_b);
+		sort_chunk(stack_a, stack_b, tab[(x * size) / chunks]);
+		x++;
 	}
 	free(tab);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 15:31:05 by jules             #+#    #+#             */
-/*   Updated: 2022/09/20 13:10:43 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:39:08 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,25 +146,25 @@ void	sort_portion(t_list **stack_a, t_list **stack_b, int min, int max)
 		rev_rotate_b(stack_b);
 }
 
-void	sort(t_list **stack_a, t_list **stack_b)
-{
-	int		*tab;
-	int		size;
-	int		x;
-	int		div;
+// void	sort(t_list **stack_a, t_list **stack_b)
+// {
+// 	int		*tab;
+// 	int		size;
+// 	int		x;
+// 	int		div;
 
-	x = 0;
-	div = 10;
-	if (check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)))
-		return ;
-	tab = get_tab(stack_copy(stack_a));
-	size = ft_lstsize(*stack_a);
-	while (x < div - 2)
-	{
-		sort_portion(stack_a, stack_b, tab[(x * size) / div], tab[((x + 1) * size) / div]);
-		x++;
-	}
-	// push_part(stack_a, stack_b, tab[0], tab[size / 4]);
-	// push_part(stack_a, stack_b, tab[0], tab[size / 2]);
-	// sort_stack(stack_b);
-}
+// 	x = 0;
+// 	div = 10;
+// 	if (check_sorted(stack_a, *stack_a, ft_lstlast(*stack_a)))
+// 		return ;
+// 	tab = get_tab(stack_copy(stack_a));
+// 	size = ft_lstsize(*stack_a);
+// 	while (x < div - 2)
+// 	{
+// 		sort_portion(stack_a, stack_b, tab[(x * size) / div], tab[((x + 1) * size) / div]);
+// 		x++;
+// 	}
+// 	// push_part(stack_a, stack_b, tab[0], tab[size / 4]);
+// 	// push_part(stack_a, stack_b, tab[0], tab[size / 2]);
+// 	// sort_stack(stack_b);
+// }

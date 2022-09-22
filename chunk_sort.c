@@ -6,7 +6,7 @@
 /*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:24:17 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/09/22 13:36:12 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/22 19:31:44 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,13 @@ void	sort_chunk(t_list **stack_a, t_list **stack_b, int max)
 	}
 }
 
+void	empty_b(t_list **stack_a, t_list **stack_b)
+{
+	(*stack_b) = *stack_b;
+	while ((*stack_b))
+		push_a(stack_a, stack_b);
+}
+
 void	sort(t_list **stack_a, t_list **stack_b)
 {
 	int	*tab;
@@ -123,13 +130,18 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	int	chunks;
 
 	tab = get_tab(stack_copy(stack_a));
-	size = ft_lstsize(*stack_a);
+	size = ft_lstsize(*stack_a) - 1;
 	x = 1;
-	chunks = 11;
+	if (size >= 200)
+		chunks = 11;
+	else
+		chunks = 5;
 	while (x <= chunks)
 	{
 		sort_chunk(stack_a, stack_b, tab[(x * size) / chunks]);
 		x++;
 	}
+	find_spot(stack_a, stack_b);
+	empty_b(stack_a, stack_b);
 	free(tab);
 }

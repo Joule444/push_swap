@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:55:59 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/09/23 14:24:00 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/25 14:00:32 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,67 @@ void	sort_3(t_list **stack_a)
 		else
 			rev_rotate_a(stack_a);
 	}
+}
+
+t_list	*get_min(t_list **stack)
+{
+	t_list	*elem;
+	t_list	*min;
+
+	elem = *stack;
+	min = elem;
+	while (elem)
+	{
+		if (elem->content < min->content)
+			min = elem;
+		elem = elem->next;
+	}
+	return (min);
+}
+
+void	grab_elem_a(t_list *elem, t_list **stack_a)
+{
+	if (better_rotate(stack_a, elem) == 1)
+		while ((*stack_a) != elem)
+			rotate_a(stack_a);
+	else
+		while ((*stack_a) != elem)
+			rev_rotate_a(stack_a);
+}
+
+void	grab_spot_a(t_list *aim, t_list **stack)
+{
+	t_list	*elem;
+
+	elem = *stack;
+	while (!(elem->next && elem->content <= aim->content && elem->next->content >= aim->content))
+	{
+		if (!elem->next)
+			return ;
+		elem = elem->next;
+	}
+	grab_elem_a(elem->next, stack);
+}
+
+void	find_spot_a(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*elem;
+
+	elem = *stack_b;
+	if (is_stack_min(elem, stack_a) || is_stack_max(elem, stack_a))
+		grab_elem_a(get_min(stack_a), stack_a);
+	else
+		grab_spot_a(elem, stack_a);
+	push_a(stack_a, stack_b);
+}
+
+void	sort_5(t_list **stack_a, t_list **stack_b)
+{
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	if (!check_sorted(stack_a))
+		sort_3(stack_a);
+	find_spot_a(stack_a, stack_b);
+	find_spot_a(stack_a, stack_b);
+	grab_elem_a(get_min(stack_a), stack_a);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/23 14:26:12 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/25 13:01:17 by jules            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b);
 int		check_sorted(t_list **stack);
 void	sort_2(t_list **stack_a);
 void	sort_3(t_list **stack_a);
+void	sort_5(t_list **stack_a, t_list **stack_b);
+int	is_stack_min(t_list *elem, t_list **stack);
+int	is_stack_max(t_list *elem, t_list **stack);
 
 #endif

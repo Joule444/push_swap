@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   better_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:17:11 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/09/22 12:59:54 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/26 13:04:10 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,16 @@ int	better_rotate_portion(t_list **stack, int max)
 		return (1);
 	else
 		return (-1);
+}
+
+void	grab_elem_a(t_list *elem, t_list **stack_a)
+{
+	if (better_rotate(stack_a, elem) == 1)
+		while ((*stack_a) != elem)
+			rotate_a(stack_a);
+	else
+		while ((*stack_a) != elem)
+			rev_rotate_a(stack_a);
 }
 
 void	grab_elem_b(t_list *elem, t_list **stack_b)

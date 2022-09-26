@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:43:18 by jules             #+#    #+#             */
-/*   Updated: 2022/07/20 15:24:10 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:42:10 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_list	**lst_init_parse(char **argv)
 	t_list	**list;
 	char	**arr;
 	t_list	*elem;
-	int		n;
 	int		i;
 
 	i = 0;
@@ -38,8 +37,7 @@ t_list	**lst_init_parse(char **argv)
 	*list = NULL;
 	while (arr[i])
 	{
-		n = ft_atoi(arr[i]);
-		elem = ft_lstnew(n);
+		elem = ft_lstnew(ft_atoi(arr[i]));
 		ft_lstadd_back(list, elem);
 		i++;
 	}

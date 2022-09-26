@@ -6,11 +6,11 @@
 #    By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 16:02:47 by jthuysba          #+#    #+#              #
-#    Updated: 2022/09/23 14:26:37 by jthuysba         ###   ########.fr        #
+#    Updated: 2022/09/26 12:40:13 by jthuysba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES:=	main ft_atoi ft_split lst_fonctions lst_fonctions2 lst_init chunk_sort push rev_rotate rotate swap get_tab better_rotate check_sorted sort_2
+FILES:=	main ft_atoi ft_split lst_fonctions lst_fonctions2 lst_init chunk_sort push rev_rotate rotate swap get_tab better_rotate check_sorted sort_2 find_spot is_stack_lim
 FILES_BONUS:=
 
 NAME:= push_swap

@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jules <jules@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/09/25 12:48:09 by jules            ###   ########.fr       */
+/*   Updated: 2022/09/26 12:52:27 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void	print_stack(t_list **stack) //to delete
-// {
-// 	t_list	*elem;
-
-// 	elem = *stack;
-// 	while (elem)
-// 	{
-// 		printf("%d\n", elem->content);
-// 		elem = elem->next;
-// 	}
-// }
+void	sort_stacks(t_list **stack_a, t_list **stack_b)
+{
+	if (check_sorted(stack_a))
+		return ;
+	else if (ft_lstsize(*stack_a) == 2)
+	{
+		if ((*stack_a)->content > (*stack_a)->next->content)
+			swap_a(stack_a);
+	}
+	else if (ft_lstsize(*stack_a) == 3)
+		sort_3(stack_a);
+	else if (ft_lstsize(*stack_a) == 5)
+		sort_5(stack_a, stack_b);
+	else
+		sort(stack_a, stack_b);
+}
 
 int	main(int argc, char **argv)
 {
@@ -47,20 +52,7 @@ int	main(int argc, char **argv)
 	}
 	else
 		return (0);
-	if (check_sorted(stack_a))
-	{
-		ft_lstclear(stack_a);
-		ft_lstclear(stack_b);
-		return (free(stack_a), free(stack_b), 0);
-	}
-	if (ft_lstsize(*stack_a) == 2)
-		sort_2(stack_a);
-	else if (ft_lstsize(*stack_a) == 3)
-		sort_3(stack_a);
-	else if (ft_lstsize(*stack_a) == 5)
-		sort_5(stack_a, stack_b);
-	else
-		sort(stack_a, stack_b);
+	sort_stacks(stack_a, stack_b);
 	ft_lstclear(stack_a);
 	ft_lstclear(stack_b);
 	return (free(stack_a), free(stack_b), 0);

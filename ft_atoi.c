@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:29:03 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 12:34:51 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/09/30 13:29:29 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
-	int		res;
-	int		sign;
+	long	res;
+	long	sign;
 
 	i = 0;
 	res = 0;

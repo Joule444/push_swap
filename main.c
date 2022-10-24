@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/10/10 15:44:59 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:44:04 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,17 @@ void	sort_stacks(t_list **stack_a, t_list **stack_b)
 		sort(stack_a, stack_b);
 }
 
-int	check_args(char **argv)
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	check_args_space(char **argv)
 {
 	int		i;
 	int		j;
@@ -42,7 +52,7 @@ int	check_args(char **argv)
 		nb = ft_atoi(argv[i]);
 		if (nb > 2147483647 || nb < -2147483648)
 			return (1);
-		if (argv[i][0] == '-')
+		if (argv[i][j] == '-')
 			j++;
 		while (argv[i][j])
 		{
@@ -54,6 +64,43 @@ int	check_args(char **argv)
 		i++;
 	}
 	return (0);
+}
+
+int	check_args_1(char **argv)
+{
+	char	**arr;
+	int		i;
+	int		j;
+	long	nb;
+
+	arr = ft_split(argv[1], ' ');
+	i = 1;
+	j = 0;
+	while (arr[i])
+	{
+		nb = ft_atoi(arr[i]);
+		if (nb > 2147483647 || nb < -2147483648)
+			return (1);
+		if (arr[i][j] == '-')
+			j++;
+		while (arr[i][j])
+		{
+			if (arr[i][j] < 48 || arr[i][j] > 57)
+				return (free(arr), 1);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (free(arr), 0);
+}
+
+int	check_args(int argc, char **argv)
+{
+	if (argc == 2)
+		return (check_args_1(argv));
+	else
+		return (check_args_space(argv));
 }
 
 int	check_error(t_list **stack_a)
@@ -81,7 +128,7 @@ int	main(int argc, char **argv)
 	t_list	**stack_a;
 	t_list	**stack_b;
 
-	if (check_args(argv))
+	if (check_args(argc, argv))
 		return (write(1, "Error\n", 7), 0);
 	if (argc == 2)
 	{
@@ -96,9 +143,14 @@ int	main(int argc, char **argv)
 	else
 		return (0);
 	if (!stack_a || !stack_b)
-		return (0);
+		return (ft_lstclear(stack_a), ft_lstclear(stack_b),
+			free(stack_a), free(stack_b), 0);
+	if ((argc == 2 && ft_strlen(argv[1]) == 1))
+		return (ft_lstclear(stack_a), ft_lstclear(stack_b),
+			free(stack_a), free(stack_b), 0);
 	if (check_error(stack_a))
-		return (write(1, "Error\n", 7), 0);
+		return (ft_lstclear(stack_a), ft_lstclear(stack_b),
+			free(stack_a), free(stack_b), write(1, "Error\n", 7), 0);
 	sort_stacks(stack_a, stack_b);
 	return (ft_lstclear(stack_a), ft_lstclear(stack_b),
 		free(stack_a), free(stack_b), 0);

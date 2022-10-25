@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/09/30 13:32:15 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:51:50 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ void		sort_5(t_list **stack_a, t_list **stack_b);
 int			is_stack_min(t_list *elem, t_list **stack);
 int			is_stack_max(t_list *elem, t_list **stack);
 void		find_spot(t_list **stack_a, t_list **stack_b);
+int			check_args_1(char **argv);
+int			check_args(int argc, char **argv);
+int			check_error(t_list **stack_a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/10/25 16:13:47 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:08:28 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,29 @@ t_list	**get_stack(int argc, char **argv)
 	return (stack_a);
 }
 
+int	is_whitespace(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!(str[i] <= 32 || str[i] == 127))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	**stack_a;
 	t_list	**stack_b;
 
+	if (argc <= 1 || ft_strlen(argv[1]) == 0 || is_whitespace(argv[1]))
+		return (0);
 	if (check_args(argc, argv))
 		return (write(1, "Error\n", 7), 0);
-	if (argc <= 1)
-		return (0);
 	stack_a = get_stack(argc, argv);
 	stack_b = malloc(sizeof(t_list) * ft_lstsize(*stack_a));
 	if (!stack_a || !stack_b)

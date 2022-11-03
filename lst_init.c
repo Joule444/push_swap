@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 12:43:18 by jules             #+#    #+#             */
-/*   Updated: 2022/10/25 14:25:12 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:15:46 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	**lst_init_parse(char **argv)
 
 	i = 0;
 	arr = ft_split(argv[1], ' ');
-	list = malloc(sizeof(t_list) * arr_len(arr) - 1);
+	list = malloc(sizeof(t_list) * (arr_len(arr) - 1));
 	if (!list)
 		return (free(arr), NULL);
 	*list = NULL;
@@ -58,7 +58,7 @@ t_list	**lst_init(int argc, char **argv)
 	int		n;
 	int		i;
 
-	list = malloc(sizeof(t_list) * argc - 1);
+	list = malloc(sizeof(t_list) * (argc - 1));
 	if (!list)
 		return (NULL);
 	*list = NULL;

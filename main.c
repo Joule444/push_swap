@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 11:58:52 by jules             #+#    #+#             */
-/*   Updated: 2022/10/25 17:08:28 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:15:18 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	main(int argc, char **argv)
 		return (write(1, "Error\n", 7), 0);
 	stack_a = get_stack(argc, argv);
 	stack_b = malloc(sizeof(t_list) * ft_lstsize(*stack_a));
+	*stack_b = NULL;
 	if (!stack_a || !stack_b)
 		return (ft_lstclear(stack_a), ft_lstclear(stack_b),
 			free(stack_a), free(stack_b), 0);

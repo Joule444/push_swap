@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 12:33:28 by jules             #+#    #+#             */
-/*   Updated: 2022/10/25 14:51:50 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:33:21 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 long		ft_atoi(const char *str);
 char		**ft_split(char const *s, char sep);
+void		free_arr(char **arr);
 
 typedef struct s_list
 {

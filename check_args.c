@@ -6,7 +6,7 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:50:10 by jthuysba          #+#    #+#             */
-/*   Updated: 2022/10/25 14:51:03 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:33:27 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	check_args_space(char **argv)
 		nb = ft_atoi(argv[i]);
 		if (nb > 2147483647 || nb < -2147483648)
 			return (1);
-		if (argv[i][j] == '-')
+		if (argv[i][j] == '-' &&
+			(argv[i][j + 1] >= 48 && argv[i][j + 1] <= 57))
 			j++;
 		while (argv[i][j])
 		{
@@ -39,26 +40,23 @@ int	check_args_space(char **argv)
 	return (0);
 }
 
-void	free_arr(char **arr)
+int	check_string(char *str, int start)
 {
-	int	i;
-
-	i = 0;
-	while (arr[i])
+	while (str[start])
 	{
-		free(arr[i]);
-		i++;
+		if (str[start] < 48 || str[start] > 57)
+			return (1);
+		start++;
 	}
-	free(arr[i]);
-	free(arr);
+	return (0);
 }
 
 int	check_args_1(char **argv)
 {
 	char	**arr;
 	int		i;
-	int		j;
 	long	nb;
+	int		j;
 
 	arr = ft_split(argv[1], ' ');
 	i = 0;
@@ -68,16 +66,13 @@ int	check_args_1(char **argv)
 		nb = ft_atoi(arr[i]);
 		if (nb > 2147483647 || nb < -2147483648)
 			return (free_arr(arr), 1);
-		if (arr[i][j] == '-')
-			j++;
-		while (arr[i][j])
-		{
-			if (arr[i][j] < 48 || arr[i][j] > 57)
-				return (free_arr(arr), 1);
-			j++;
-		}
-		j = 0;
+		if (arr[i][0] == '-' &&
+				((arr[i][1] >= 48 && arr[i][1] <= 57)))
+				j++;
+		if (check_string(arr[i], j))
+			return (free_arr(arr), 1);
 		i++;
+		j = 0;
 	}
 	return (free_arr(arr), 0);
 }

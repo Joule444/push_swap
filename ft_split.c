@@ -6,11 +6,25 @@
 /*   By: jthuysba <jthuysba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:12:50 by jules             #+#    #+#             */
-/*   Updated: 2022/09/13 12:34:47 by jthuysba         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:33:46 by jthuysba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr[i]);
+	free(arr);
+}
 
 static size_t	count_words(char const *s, char sep)
 {
